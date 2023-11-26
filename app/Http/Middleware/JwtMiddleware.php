@@ -17,7 +17,7 @@ class JwtMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!$request->hasHeader('Authorization')) {
-            return response()->json(['error' => 'Token is absent1'], 401);
+            return response()->json(['error' => 'Token is absent'], 401);
         }
 
         try {
