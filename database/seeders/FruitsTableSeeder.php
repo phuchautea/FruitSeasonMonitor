@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Carbon\Carbon;
 
 class FruitsTableSeeder extends Seeder
@@ -49,13 +50,14 @@ class FruitsTableSeeder extends Seeder
             ['Mãng cầu dai (Na)', 1, 12],
             ['Quýt', 9, 3],
             ['Dưa hấu', 1, 12],
-            ['Mận/Gioi', 1, 12],
+            ['Mận (Gioi)', 1, 12],
             ['Dừa', 1, 12],
         ];
 
         foreach ($fruits as $fruit) {
             DB::table('fruits')->insert([
                 'name' => $fruit[0],
+                'slug' => Str::slug($fruit[0], '-'),
                 'month_start' => $fruit[1],
                 'month_end' => $fruit[2],
                 'created_at' => Carbon::now(),
